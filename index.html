@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hong Kong Weather Forecast</title>
+<style>
+  :root {
+    --bg: #eef4fb;
+    --card: #ffffff;
+    --text: #16202a;
+    --muted: #5b6b7a;
+    --accent: #1a73e8;
+    --border: #dde6f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1720;
+      --card: #182430;
+      --text: #edf2f7;
+      --muted: #9aabbc;
+      --accent: #6aa9ff;
+      --border: #2a3947;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px 16px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+  }
+  .app {
+    width: 100%;
+    max-width: 720px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    margin: 0 0 4px;
+    font-size: 1.6rem;
+  }
+  header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .current {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .current .icon {
+    font-size: 3.2rem;
+    line-height: 1;
+  }
+  .current .temp {
+    font-size: 2.6rem;
+    font-weight: 600;
+  }
+  .current .desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .meta-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .meta-row div {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .meta-row strong {
+    color: var(--text);
+    display: block;
+    font-size: 1rem;
+  }
+  .forecast {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+    gap: 10px;
+  }
+  .day {
+    text-align: center;
+    padding: 12px 6px;
+    border-radius: 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+  }
+  .day .name {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .day .icon {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+  }
+  .day .hi { font-weight: 600; }
+  .day .lo { color: var(--muted); font-size: 0.85rem; }
+  .day .pop { color: var(--accent); font-size: 0.75rem; margin-top: 4px; }
+  .status {
+    text-align: center;
+    color: var(--muted);
+    padding: 30px 0;
+  }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.75rem;
+    margin-top: 8px;
+  }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Hong Kong Weather Forecast</h1>
+      <p id="updated">Loading…</p>
+    </header>
+
+    <div id="content">
+      <div class="status">Fetching latest forecast…</div>
+    </div>
+
+    <footer>Data from <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · Hong Kong (22.32°N, 114.17°E)</footer>
+  </div>
+
+<script>
+const LAT = 22.3193;
+const LON = 114.1694;
+const TZ = "Asia/Hong_Kong";
+
+const WEATHER_CODES = {
+  0: ["Clear sky", "☀️"],
+  1: ["Mainly clear", "🌤️"],
+  2: ["Partly cloudy", "⛅"],
+  3: ["Overcast", "☁️"],
+  45: ["Fog", "🌫️"],
+  48: ["Depositing rime fog", "🌫️"],
+  51: ["Light drizzle", "🌦️"],
+  53: ["Moderate drizzle", "🌦️"],
+  55: ["Dense drizzle", "🌧️"],
+  56: ["Light freezing drizzle", "🌧️"],
+  57: ["Dense freezing drizzle", "🌧️"],
+  61: ["Slight rain", "🌦️"],
+  63: ["Moderate rain", "🌧️"],
+  65: ["Heavy rain", "🌧️"],
+  66: ["Light freezing rain", "🌧️"],
+  67: ["Heavy freezing rain", "🌧️"],
+  71: ["Slight snow", "🌨️"],
+  73: ["Moderate snow", "🌨️"],
+  75: ["Heavy snow", "❄️"],
+  77: ["Snow grains", "❄️"],
+  80: ["Slight rain showers", "🌦️"],
+  81: ["Moderate rain showers", "🌧️"],
+  82: ["Violent rain showers", "⛈️"],
+  85: ["Slight snow showers", "🌨️"],
+  86: ["Heavy snow showers", "❄️"],
+  95: ["Thunderstorm", "⛈️"],
+  96: ["Thunderstorm w/ hail", "⛈️"],
+  99: ["Thunderstorm w/ heavy hail", "⛈️"],
+};
+
+function describe(code) {
+  return WEATHER_CODES[code] || ["Unknown", "❔"];
+}
+
+function dayName(dateStr, index) {
+  if (index === 0) return "Today";
+  const d = new Date(dateStr + "T00:00:00");
+  return d.toLocaleDateString("en-US", { weekday: "short" });
+}
+
+async function loadForecast() {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}` +
+    `&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m` +
+    `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max` +
+    `&timezone=${encodeURIComponent(TZ)}`;
+
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Forecast request failed: " + res.status);
+  return res.json();
+}
+
+function render(data) {
+  const cur = data.current;
+  const daily = data.daily;
+  const [curDesc, curIcon] = describe(cur.weather_code);
+
+  const updated = document.getElementById("updated");
+  updated.textContent = "Updated " + new Date(cur.time).toLocaleString("en-HK", { timeZone: TZ, hour: "2-digit", minute: "2-digit", day: "numeric", month: "short" });
+
+  let html = `
+    <div class="card">
+      <div class="current">
+        <div>
+          <div class="temp">${Math.round(cur.temperature_2m)}°C</div>
+          <div class="desc">${curDesc} · feels like ${Math.round(cur.apparent_temperature)}°C</div>
+        </div>
+        <div class="icon">${curIcon}</div>
+      </div>
+      <div class="meta-row">
+        <div><strong>${cur.relative_humidity_2m}%</strong>Humidity</div>
+        <div><strong>${Math.round(cur.wind_speed_10m)} km/h</strong>Wind</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="forecast">
+  `;
+
+  for (let i = 0; i < daily.time.length; i++) {
+    const [desc, icon] = describe(daily.weather_code[i]);
+    html += `
+      <div class="day" title="${desc}">
+        <div class="name">${dayName(daily.time[i], i)}</div>
+        <div class="icon">${icon}</div>
+        <div class="hi">${Math.round(daily.temperature_2m_max[i])}°</div>
+        <div class="lo">${Math.round(daily.temperature_2m_min[i])}°</div>
+        <div class="pop">💧${daily.precipitation_probability_max[i]}%</div>
+      </div>
+    `;
+  }
+
+  html += `</div></div>`;
+  document.getElementById("content").innerHTML = html;
+}
+
+loadForecast()
+  .then(render)
+  .catch((err) => {
+    document.getElementById("updated").textContent = "";
+    document.getElementById("content").innerHTML =
+      `<div class="status">Couldn't load the forecast right now.<br>${err.message}</div>`;
+  });
+</script>
+</body>
+</html>
