@@ -6,8 +6,8 @@ Static site (HTML/CSS/JS, no build step). Open `index.html` in a browser, or upl
 
 | What | Where |
 |---|---|
-| Brand colors and font | Top of `styles.css` (`--brand`, `--accent`, `--ink`, `--font`, …) |
-| Logo | Replace `assets/logo-placeholder.svg` (same filename), or update the `<img>` paths in `index.html` |
+| Brand colors and font | Set from the logo (navy `#0B1B3F`, orange `#FF6B1A`) at the top of `styles.css`; adjust there if needed |
+| Logo | Done: `assets/logo-primeai.png` (full lockup), `assets/logo-mark.png` (P mark), `assets/favicon.png`. An SVG version would be sharper if you have one |
 | Hero photo | Add e.g. `assets/hero.jpg`, then set `--hero-image: url("assets/hero.jpg");` in `styles.css` |
 | Domain | Replace every `https://www.example.com` in `index.html` (canonical, Open Graph, JSON-LD) |
 | Email | Replace `hello@example.com` in `index.html` (JSON-LD, form `data-mailto`, footer) |
