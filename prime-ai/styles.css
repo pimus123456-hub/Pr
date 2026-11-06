@@ -10,7 +10,8 @@
   --ink: #0B1B3F;          /* Prime AI navy (from logo) */
   --text: #24324A;
   --muted: #5A6A80;
-  --paper: #E4E9F2;        /* page background (soft navy mat) */
+  --paper: #FFFFFF;        /* page background */
+  --field: #F4F6F9;        /* form field fill */
   --surface: #FFFFFF;
   --line: #DCE2EA;
   --font: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -205,7 +206,7 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .contact-form label { display: grid; gap: 6px; font-size: .92rem; font-weight: 500; color: var(--ink); }
 .contact-form .opt { color: var(--muted); font-weight: 400; }
 .contact-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.contact-form input, .contact-form textarea { font: inherit; font-weight: 400; color: var(--text); padding: 11px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); width: 100%; }
+.contact-form input, .contact-form textarea { font: inherit; font-weight: 400; color: var(--text); padding: 11px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--field); width: 100%; }
 .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--brand); outline-offset: 1px; background: #fff; }
 .contact-form button { justify-self: start; }
 .form-status { font-size: .92rem; color: var(--muted); min-height: 1.4em; }
