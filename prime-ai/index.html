@@ -208,22 +208,11 @@
       <div class="contact-copy">
         <h2 id="contact-h">Find out what AI says about your academy</h2>
         <p>Tell us where you train and which sport. We'll run the audit and walk you through it on a free 30-minute call.</p>
-        <!-- TODO: replace with your Calendly (or other) booking link -->
-        <a class="btn btn-light" href="#contact-form">Prefer to book a time? Add your booking link here</a>
+        <a class="btn btn-light" href="https://form.typeform.com/to/W63GgAyb" target="_blank" rel="noopener">Open the form in a new tab</a>
       </div>
-      <!-- TODO: this form opens the visitor's email app. To collect submissions directly, set action to a form service (e.g. Formspree) and remove data-mailto. -->
-      <form class="contact-form" id="contact-form" data-mailto="hello@example.com">
-        <label>Your name<input name="name" autocomplete="name" required></label>
-        <label>Email<input name="email" type="email" autocomplete="email" required></label>
-        <label>Academy name<input name="academy" required></label>
-        <div class="row">
-          <label>City and state<input name="location" placeholder="e.g. Plano, TX" required></label>
-          <label>Main sport<input name="sport" placeholder="e.g. Softball" required></label>
-        </div>
-        <label>Anything we should know? <span class="opt">(optional)</span><textarea name="message" rows="3"></textarea></label>
-        <button class="btn btn-brand" type="submit">Request my audit</button>
-        <p class="form-status" role="status" aria-live="polite"></p>
-      </form>
+      <div class="contact-form typeform-wrap" id="contact-form">
+        <iframe class="typeform-embed" src="https://form.typeform.com/to/W63GgAyb" title="Prime AI audit request form" loading="lazy" allow="camera; microphone; autoplay; encrypted-media; fullscreen"></iframe>
+      </div>
     </section>
   </main>
 

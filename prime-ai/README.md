@@ -10,8 +10,7 @@ Static site (HTML/CSS/JS, no build step). Open `index.html` in a browser, or upl
 | Logo | Done: `assets/logo-primeai.png` (full lockup), `assets/logo-mark.png` (P mark), `assets/favicon.png`. An SVG version would be sharper if you have one |
 | Hero photo | Add e.g. `assets/hero.jpg`, then set `--hero-image: url("assets/hero.jpg");` in `styles.css` |
 | Domain | Replace every `https://www.example.com` in `index.html` (canonical, Open Graph, JSON-LD) |
-| Email | Replace `hello@example.com` in `index.html` (JSON-LD, form `data-mailto`, footer) |
-| Booking link | The "Prefer to book a time?" button in the contact section |
+| Email | Replace `hello@example.com` in `index.html` (JSON-LD, footer) |
 | Results | The Results section is a labeled sample: fill in a real case study, then delete the "Sample layout" note |
 | Team | Names, roles and initials (or swap the initials for photos) |
 
@@ -23,4 +22,4 @@ Static site (HTML/CSS/JS, no build step). Open `index.html` in a browser, or upl
 
 ## Contact form
 
-By default the form opens the visitor's email app with their details filled in. To receive submissions directly, point the form's `action` at a form service (e.g. Formspree), add `method="POST"`, and remove the `data-mailto` attribute.
+The contact section embeds the Typeform at https://form.typeform.com/to/W63GgAyb, so responses arrive in your Typeform account. To use a different form, change the URL in both places in the contact section of `index.html` (the iframe and the "Open the form in a new tab" button).
