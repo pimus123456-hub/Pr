@@ -8,7 +8,7 @@ Static site (HTML/CSS/JS, no build step). Open `index.html` in a browser, or upl
 |---|---|
 | Brand colors and font | Set from the logo (navy `#0B1B3F`, orange `#FF6B1A`) at the top of `styles.css`; adjust there if needed |
 | Logo | Done: `assets/logo-primeai.png` (full lockup), `assets/logo-mark.png` (P mark), `assets/favicon.png`. An SVG version would be sharper if you have one |
-| Hero photo | Add e.g. `assets/hero.jpg`, then set `--hero-image: url("assets/hero.jpg");` in `styles.css` |
+| Hero athlete | Replace the placeholder ball `assets/hero-athlete.svg` with a cut-out athlete photo (transparent PNG/WebP, about 900×1000 px), then update the `hero-athlete` `<img src>` in `index.html` |
 | Domain | Replace every `https://www.example.com` in `index.html` (canonical, Open Graph, JSON-LD) |
 | Email | Replace `hello@example.com` in `index.html` (JSON-LD, footer) |
 | Results | The Results section is a labeled sample: fill in a real case study, then delete the "Sample layout" note |

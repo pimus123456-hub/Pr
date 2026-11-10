@@ -15,7 +15,7 @@
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
   <script type="application/ld+json">
@@ -66,7 +66,7 @@
   <header class="hero" id="top">
     <nav class="nav" aria-label="Main">
       <a class="brand" href="#top" aria-label="Prime AI home">
-        <img src="assets/logo-mark.png" alt="" width="40" height="40">
+        <img src="assets/logo-mark.png" alt="" width="36" height="36">
         <span>Prime<b>AI</b></span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
@@ -77,39 +77,50 @@
         <li><a href="#team">Team</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
+      <a class="nav-cta" href="#contact">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm4 9.5 3.5 3.5"/></svg>
+        Free AI audit
+      </a>
     </nav>
 
-    <div class="hero-body">
-      <h1><span>Be the</span> <span>answer.</span></h1>
+    <div class="hero-stage">
+      <p class="hero-word" aria-hidden="true">PRIME AI</p>
+      <!-- Athlete cut-out: replace assets/hero-athlete.svg with a transparent PNG/WebP of your athlete (e.g. assets/hero-athlete.png) and update src -->
+      <img class="hero-athlete" src="assets/hero-athlete.svg" alt="" width="900" height="1000">
+    </div>
 
-      <div class="prints" aria-label="Illustration of AI assistants recommending an academy">
-        <figure class="print print-back" aria-hidden="true">
-          <div class="print-shot">
-            <div class="mini-q">Where should my son train for travel baseball in Tampa?</div>
-            <div class="mini-a"><strong>Your Academy</strong> is a top pick for ages 10–16… <span class="cite">youracademy.com</span></div>
-          </div>
-          <figcaption><strong>Cited in Perplexity</strong><span>Illustration</span></figcaption>
-        </figure>
-        <figure class="print print-front">
-          <div class="print-shot">
-            <div class="mini-q">Best youth softball academy near Plano, TX?</div>
-            <div class="mini-a">Three well-reviewed options: <strong>1. Your Academy</strong>, with year-round hitting and pitching programs for ages 8–18. <span class="cite">youracademy.com</span></div>
-          </div>
-          <figcaption><strong>Named by ChatGPT</strong><span>Illustration</span></figcaption>
-        </figure>
-      </div>
-
-      <div class="hero-side">
+    <div class="hero-foot">
+      <div class="hero-copy">
+        <h1>Get named when parents ask AI</h1>
         <a class="cta-split" href="#contact">
-          <span class="cta-label">Free AI visibility audit</span>
+          <span class="cta-label">Get a free AI audit</span>
           <span class="cta-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></span>
         </a>
-        <p class="hero-sub">When parents ask ChatGPT, Google AI Overviews, Perplexity or Gemini where to train, Prime AI makes sure US sports academies are the name they hear.</p>
       </div>
+
+      <figure class="answer-mini" aria-label="Illustration of ChatGPT recommending an academy">
+        <div class="answer-mini-shot">
+          <div class="mini-q">Best youth softball academy near Plano, TX?</div>
+          <div class="mini-a"><strong>1. Your Academy</strong>: year-round hitting and pitching for ages 8–18. <span class="cite">youracademy.com</span></div>
+        </div>
+        <figcaption>Named by ChatGPT <span>(illustration)</span></figcaption>
+        <a class="cta-split cta-small" href="#process">
+          <span class="cta-label">See how it works</span>
+          <span class="cta-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></span>
+        </a>
+      </figure>
     </div>
   </header>
 
   <main id="main">
+
+    <section class="statement" aria-label="Why it matters">
+      <div class="statement-card">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 5.6L20 9.3l-4.4 3.9 1.3 5.8L12 16l-4.9 3 1.3-5.8L4 9.3l5.8-.7z"/></svg>
+        <p>Built for ChatGPT, Gemini, Perplexity and Google AI Overviews</p>
+      </div>
+      <p class="statement-text">Families no longer scroll ten blue links. <span>They ask an assistant, get three names, and book a visit with one of them.</span></p>
+    </section>
 
     <section class="section intro" id="services" aria-labelledby="services-h">
       <div class="intro-lead">
