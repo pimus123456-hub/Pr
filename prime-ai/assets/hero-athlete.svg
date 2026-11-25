@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1000">
+  <!-- Placeholder for the hero athlete cut-out. Replace with a transparent PNG/WebP of your athlete. -->
+  <defs>
+    <radialGradient id="ball" cx=".36" cy=".32" r=".75">
+      <stop offset="0" stop-color="#FF9A57"/>
+      <stop offset=".55" stop-color="#FF6B1A"/>
+      <stop offset="1" stop-color="#B8460B"/>
+    </radialGradient>
+    <radialGradient id="shade" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#050E24" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#050E24" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="450" cy="940" rx="250" ry="40" fill="url(#shade)"/>
+  <g transform="rotate(-18 450 560)">
+    <circle cx="450" cy="560" r="250" fill="url(#ball)"/>
+    <g fill="none" stroke="#2A1206" stroke-width="10" stroke-linecap="round" opacity=".85">
+      <path d="M200 560h500"/>
+      <path d="M450 310v500"/>
+      <path d="M273 383c75 58 108 117 108 177s-33 118-108 177"/>
+      <path d="M627 383c-75 58-108 117-108 177s33 118 108 177"/>
+    </g>
+  </g>
+</svg>
