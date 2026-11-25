@@ -101,6 +101,7 @@ p { margin: 0; }
   font-weight: 800; font-size: clamp(5rem, 18.5vw, 17.5rem); line-height: .8; letter-spacing: -0.065em;
   color: #fff;
 }
+.placeholder-tag { position: absolute; z-index: 4; left: 50%; top: 56%; transform: translateX(-50%); margin: 0; padding: 6px 12px; white-space: nowrap; font-size: .85rem; font-weight: 600; color: #7A5200; background: #FFF3D6; border: 1px dashed #E0AE3A; border-radius: 8px; }
 .hero-athlete { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 84%; width: auto; max-width: none; z-index: 2; }
 
 .hero-foot {
@@ -206,16 +207,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .contact h2 { color: var(--brand); }
 .contact-copy p { margin-top: 18px; max-width: 44ch; color: rgba(255,255,255,.88); font-size: 1.1rem; }
 .contact-copy .btn { margin-top: 28px; }
-.contact-form { background: #fff; color: var(--text); border-radius: var(--radius-md); padding: clamp(20px, 3vw, 32px); display: grid; gap: 16px; }
-.contact-form label { display: grid; gap: 6px; font-size: .92rem; font-weight: 500; color: var(--ink); }
-.contact-form .opt { color: var(--muted); font-weight: 400; }
-.contact-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.contact-form input, .contact-form textarea { font: inherit; font-weight: 400; color: var(--text); padding: 11px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--field); width: 100%; }
-.contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--brand); outline-offset: 1px; background: #fff; }
-.contact-form button { justify-self: start; }
-.typeform-wrap { padding: 0; overflow: hidden; min-height: 560px; }
-.typeform-embed { display: block; width: 100%; height: 100%; min-height: 560px; border: 0; }
-.form-status { font-size: .92rem; color: var(--muted); min-height: 1.4em; }
+.typeform-wrap { background: #fff; border-radius: var(--radius-md); overflow: hidden; height: clamp(560px, 70vh, 680px); }
+.typeform-embed { display: block; width: 100%; height: 100%; border: 0; }
 
 .site-footer { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter) 48px; display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; color: var(--muted); font-size: .95rem; }
 .site-footer .copy { margin-left: auto; }
@@ -242,7 +235,9 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   .hero-word { top: 120px; font-size: 21.5vw; letter-spacing: -0.06em; }
   .hero-athlete { height: 280px; top: 150px; bottom: auto; }
   .answer-mini { width: 100%; }
-  .steps, .people, .contact-form .row { grid-template-columns: 1fr; }
+  .placeholder-tag { top: 330px; }
+  .typeform-wrap { height: 600px; }
+  .steps, .people { grid-template-columns: 1fr; }
   .steps li::before { display: none; }
   .case-stats div { flex-direction: column; gap: 4px; }
   .site-footer .copy { margin-left: 0; }
