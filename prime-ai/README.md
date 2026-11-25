@@ -20,6 +20,17 @@ Static site (HTML/CSS/JS, no build step). Open `index.html` in a browser, or upl
 - Semantic headings, descriptive meta tags, and plain-language answers that assistants can quote.
 - Validate after deploying with Google's Rich Results Test and the Schema.org validator.
 
-## Contact form
+## Application form
 
-The contact section embeds the Typeform at https://form.typeform.com/to/W63GgAyb, so responses arrive in your Typeform account. To use a different form, change the URL in both places in the contact section of `index.html` (the iframe and the "Open the form in a new tab" button).
+The "Apply for a spot" section has a built-in 3-step form (no Typeform needed):
+
+1. Name, email, phone number, then the "Apply for a spot" button
+2. Where are you right now? (Preparing to launch / Live and growing / Established and scaling)
+3. How many members do you have currently? and What do you need help with? (Lead generation / Lead management and follow-up / Landing page / AI automation, pick any), then "Apply for the spot"
+
+**Where the answers go.** Pick one before launch:
+
+- **Netlify:** host the site on Netlify and do nothing else. Answers show up under Forms in your Netlify dashboard, and you can turn on email notifications there.
+- **Any other host:** make a free form at formspree.io, copy its URL (like `https://formspree.io/f/abcd1234`) and paste it into `data-endpoint=""` on the `<form id="apply-form">` tag in `index.html`. Answers arrive in your email.
+
+To change a question or option, edit its text in the `apply-step` blocks in `index.html`.

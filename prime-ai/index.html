@@ -219,14 +219,60 @@
 
     <section class="section contact" id="contact" aria-labelledby="contact-h">
       <div class="contact-copy">
-        <h2 id="contact-h">Find out what AI says about your academy</h2>
-        <p>Tell us where you train and which sport. We'll run the audit and walk you through it on a free 30-minute call.</p>
-        <a class="btn btn-light" href="https://form.typeform.com/to/W63GgAyb" target="_blank" rel="noopener">Open the form in a new tab</a>
+        <h2 id="contact-h">Apply for a spot with Prime AI</h2>
+        <p>Three quick steps, under a minute. We'll review your answers and reach out to book a call.</p>
       </div>
-      <!-- Typeform: to use a different form, change the URL here and on the button above -->
-      <div class="typeform-wrap" id="contact-form">
-        <iframe class="typeform-embed" src="https://form.typeform.com/to/W63GgAyb" title="Prime AI audit request form" loading="lazy" allow="camera; microphone; autoplay; encrypted-media; fullscreen"></iframe>
-      </div>
+
+      <!--
+        APPLICATION FORM. Answers are sent to the address in data-endpoint.
+        Paste your Formspree form URL there (e.g. https://formspree.io/f/abcd1234).
+        If the site is hosted on Netlify, leave it empty: Netlify Forms picks it up automatically.
+      -->
+      <form class="apply" id="apply-form" name="apply" method="POST" data-netlify="true" netlify-honeypot="company_website" data-endpoint="" novalidate>
+        <input type="hidden" name="form-name" value="apply">
+        <p class="hp" aria-hidden="true"><label>Leave empty <input name="company_website" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="apply-progress" aria-hidden="true"><span class="apply-bar"></span></div>
+        <p class="apply-count" aria-live="polite">Step <b class="apply-n">1</b> of 3</p>
+
+        <fieldset class="apply-step" data-step="1">
+          <legend>Your details</legend>
+          <label>Name <input name="name" autocomplete="name" required></label>
+          <label>Email <input name="email" type="email" autocomplete="email" required></label>
+          <label>Phone number <input name="phone" type="tel" autocomplete="tel" required></label>
+          <div class="apply-nav"><button type="button" class="apply-btn" data-next>Apply for a spot</button></div>
+        </fieldset>
+
+        <fieldset class="apply-step" data-step="2" hidden>
+          <legend>Where are you right now?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="stage" value="Preparing to launch" required><span class="key">A</span>Preparing to launch</label>
+            <label class="choice"><input type="radio" name="stage" value="Live and growing"><span class="key">B</span>Live and growing</label>
+            <label class="choice"><input type="radio" name="stage" value="Established and scaling"><span class="key">C</span>Established and scaling</label>
+          </div>
+          <div class="apply-nav"><button type="button" class="apply-back" data-back>Back</button><button type="button" class="apply-btn" data-next>Next</button></div>
+        </fieldset>
+
+        <fieldset class="apply-step" data-step="3" hidden>
+          <legend>About your business</legend>
+          <label>How many members do you have currently? <input name="members" type="number" min="0" inputmode="numeric" required></label>
+          <p class="q">What do you need help with? <span class="opt">Pick all that apply</span></p>
+          <div class="choices" data-group="help">
+            <label class="choice"><input type="checkbox" name="help" value="Lead generation"><span class="key">A</span>Lead generation</label>
+            <label class="choice"><input type="checkbox" name="help" value="Lead management and follow-up"><span class="key">B</span>Lead management and follow-up</label>
+            <label class="choice"><input type="checkbox" name="help" value="Landing page"><span class="key">C</span>Landing page</label>
+            <label class="choice"><input type="checkbox" name="help" value="AI automation"><span class="key">D</span>AI automation</label>
+          </div>
+          <div class="apply-nav"><button type="button" class="apply-back" data-back>Back</button><button type="submit" class="apply-btn">Apply for the spot</button></div>
+        </fieldset>
+
+        <p class="apply-error" role="alert"></p>
+
+        <div class="apply-done" hidden tabindex="-1">
+          <h3>Thanks, you're in the queue.</h3>
+          <p>We'll review your answers and get back to you shortly to book your call.</p>
+        </div>
+      </form>
     </section>
   </main>
 
